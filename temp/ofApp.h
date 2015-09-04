@@ -53,7 +53,8 @@ private:
   float WhiteEnemyRatio; // 白色敌人的比率
 
   bool bGameRunning; // 游戏状态
-  string GameOverString; // 游戏结束显示的文字  
+  string GameOverString; // 游戏结束显示的文字
+  float HP,HPMax; // 体力，体力最大值  
 
   ofFbo Canvas; // 画布
 };

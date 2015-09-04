@@ -1,6 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 #include "CircleSprite.h"
 
 class ofApp : public ofBaseApp{
@@ -41,19 +42,40 @@ private:
   map<int,bool> MouseKeyState;
   ofVec2f MousePos;   
 
-	bool bShowDebug; // 是否显示调试信息
-
+	ofParameter<bool> bShowDebug; // 是否显示调试信息
+  ofParameter<float> FPS; // 帧率
 	int windowSizeX, windowSizeY; //窗口尺寸
 		
 	ofPtr<DrawGame::CircleSprite> pPlayer; // 玩家 
 
   deque<ofPtr<DrawGame::CircleSprite> > Enemies; // 敌人   
-  float EnemyBirthrate; // 敌人出生概率	
-  float EnemyGrowthrate; // 敌人生长速率
-  float WhiteEnemyRatio; // 白色敌人的比率
+  ofParameter<float> EnemyBirthrate; // 敌人出生概率	
+  ofParameter<float> EnemyGrowthrate; // 敌人生长速率
+  ofParameter<float> WhiteEnemyRatio; // 白色敌人的比率
 
   bool bGameRunning; // 游戏状态
-  string GameOverString; // 游戏结束显示的文字  
+  string GameOverString; // 游戏结束显示的文字
+  ofParameter<float> HP,HPMax; // 体力，体力最大值  
 
   ofFbo Canvas; // 画布
+
+  // 游戏规则参数
+  ofParameter<float> CoinValue;
+  ofParameter<float> HPIncSpd;
+  ofParameter<float> HPDecSpd;
+  ofParameter<float> HPDecJumpA;
+  ofParameter<float> HPDecJumpB; 
+  ofParameter<float> HPEatAmt;
+  ofParameter<float> HPBeatAmt;
+  ofParameter<float> HPBeatAmt2;
+
+  ofParameterGroup Params;
+  ofxPanel GUI_Debug; // 调试GUI
+  ofxButton BtnReset; // 重置按钮
+  ofxButton BtnSaveSettings;// Save Settings 按钮
+  ofxButton BtnLoadSettings;// Load Settings 按钮  
+  ofxButton BtnSaveDrawing; // Save Drawing 按钮
+  void saveSettings();
+  void loadSettings();
+
 };

@@ -54,6 +54,20 @@ void ofApp::setup(){
   P6.setSpeed(1.0f);
   P6.setMultiPlay(true);
   Sounds["Error"] = P6;
+  ofSoundPlayer P7;
+  bool bP7 = P7.loadSound("sounds/shrink.mp3");
+  P7.setLoop(false);
+  P7.setVolume(1.0f);
+  P7.setSpeed(1.0f);
+  P7.setMultiPlay(true);
+  Sounds["Beat"] = P7;
+  ofSoundPlayer P8;
+  bool bP8 = P8.loadSound("sounds/whip.mp3");
+  P8.setLoop(false);
+  P8.setVolume(1.0f);
+  P8.setSpeed(1.0f);
+  P8.setMultiPlay(true);
+  Sounds["Beat2"] = P8;
 	
   // 初始化键鼠状态
   for(int i=0;i<3;i++)
@@ -62,7 +76,8 @@ void ofApp::setup(){
   } 
   MousePos = ofVec2f(0,0);
 
-	bShowDebug = true;//默认显示调试信息
+	bShowDebug.set("ShowDebugInfo",true);//默认显示调试信息
+  FPS.set("FPS",0,0,100);
 
 	//记录默认窗口尺寸
 	windowSizeX = ofGetWidth();
@@ -72,23 +87,72 @@ void ofApp::setup(){
   pPlayer.reset(new DrawGame::CircleSprite(&Font));   
 
   // 初始化敌人参数
-  EnemyBirthrate = 1.0f;
-  EnemyGrowthrate = 10.0f;
-  WhiteEnemyRatio = 0.3f;
+  EnemyBirthrate.set("EnemyBirthRate",1.0f,0.2f,5.0f);
+  EnemyGrowthrate.set("EnemyGrowthRate",10.0f,0.0f,50.0f);
+  WhiteEnemyRatio.set("WhiteEnemyRatio",0.3f,0.0f,1.0f);
 
   // 游戏状态
-  bGameRunning = true; 
+  bGameRunning = true;
+  HP.set("HP",100.0f,50.0f,500.0f);
+  HPMax.set("HPMax",100.0f,50.0f,500.0f); 
 
   // 画布
   Canvas.allocate(windowSizeX,windowSizeY,GL_RGBA);
   Canvas.begin();
   ofClear(ofColor::white);
   Canvas.end();
+
+  // 游戏规则参数
+  CoinValue.set("CoinValue",20.0f,0.0f,100.0f);
+  HPIncSpd.set("HPIncreaseSpeed",3.0f,0.0f,30.0f);
+  HPDecSpd.set("HPDecreaseSpeed",1.0f,0.0f,10.0f);
+  HPDecJumpA.set("HPDecJumpA",5.0f,0.0f,50.0f);
+  HPDecJumpB.set("HPDecJumpB",2.0f,0.0f,20.0f);
+  HPEatAmt.set("HPEatAmount",7.0f,0.0f,200.0f);
+  HPBeatAmt.set("HPBeatAmount",15.0f,0.0f,500.0f);
+  HPBeatAmt2.set("HPBeatAmount",50.0f,0.0f,500.0f);
+
+  // 初始化调试界面
+  Params.setName("Settings");    
+  Params.add(EnemyBirthrate);
+  Params.add(EnemyGrowthrate);
+  Params.add(WhiteEnemyRatio);
+  Params.add(HP);
+  Params.add(HPMax);
+  Params.add(CoinValue);
+  Params.add(HPIncSpd);
+  Params.add(HPDecSpd);
+  Params.add(HPDecJumpA);
+  Params.add(HPDecJumpB);
+  Params.add(HPEatAmt);
+  Params.add(HPBeatAmt);
+  Params.add(HPBeatAmt2);
+  loadSettings();
+  
+  BtnReset.setup("Reset Game");
+  BtnReset.addListener(this,&ofApp::startGame);
+  BtnSaveDrawing.setup("Save Drawing");
+  BtnSaveDrawing.addListener(this,&ofApp::saveCanvasImage);
+  BtnSaveSettings.setup("Save Settings");
+  BtnSaveSettings.addListener(this,&ofApp::saveSettings);
+  BtnLoadSettings.setup("Load Settings");  
+  BtnLoadSettings.addListener(this,&ofApp::loadSettings);
+ 
+  GUI_Debug.setup("Params");
+  GUI_Debug.add(&BtnReset);
+  GUI_Debug.add(&BtnSaveDrawing);
+  GUI_Debug.add(&BtnSaveSettings);
+  GUI_Debug.add(&BtnLoadSettings);
+  GUI_Debug.add(bShowDebug);
+  GUI_Debug.add(FPS);
+  GUI_Debug.add(Params);
+  GUI_Debug.setPosition(
+    ofGetWidth()-GUI_Debug.getWidth(),0);  
+
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
-	
+void ofApp::update(){	
 	float dt = ofGetLastFrameTime();
 
   if(bGameRunning)
@@ -103,22 +167,29 @@ void ofApp::update(){
     {
       ofPtr<DrawGame::CircleSprite> En = *itEnemy;     
       if(pPlayer->isSameColor(*En)&&pPlayer->encompass(*En))
-      {       
+      {      
+        HP += HPEatAmt;
         eraseEnemy(itEnemy, "Eat");
         break;
       }
       if(!pPlayer->isSameColor(*En)&&En->encompass(*pPlayer))
       {
-        eraseEnemy(itEnemy,"Coin");      
+        eraseEnemy(itEnemy,"Coin");  
+        HP+= CoinValue;
         break;
       }     
       if(pPlayer->isSameColor(*En)&&En->encompass(*pPlayer))
       {
-        gameOver();
-        GameOverString = "You're Eaten!";
-        return;
+        HP-=HPBeatAmt; 
+        eraseEnemy(itEnemy,"Beat");        
+        if(HP<=0.0f)
+        {
+          GameOverString = "You're Exhausted!";
+          gameOver();           
+        }   
+        break;
       }    
-      if(En->getSize()<5.0f)
+      if(En->getSize()<25.0f&&En->getbWhite())
       {
         eraseEnemy(itEnemy," ");
         break;
@@ -133,7 +204,25 @@ void ofApp::update(){
     {
       pPlayer->changeRot(360.0f*dt);
     }
+
+    if(MouseKeyState[0])
+    {
+      HP+= dt*HPIncSpd;     
+    }    
   } 
+  HP = ofClamp(HP,0,HPMax);
+
+  // 根据是否按住GUI来判断是否显示光标
+  bool bPressGUI = GUI_Debug.getShape().inside(
+    ofVec2f(ofGetMouseX(),ofGetMouseY()));
+  if(bPressGUI&&bShowDebug)
+  {
+    ofShowCursor();
+  }
+  else
+  {
+    ofHideCursor();
+  }
   
 }
 
@@ -182,6 +271,40 @@ void ofApp::draw(){
     ofPopStyle();
   }
 
+  // 显示界面
+  // 体力
+  float BarX(1.0f);
+  float BarY(25.0f);
+  float BarHeight(-Font.stringHeight("HP"));
+  ofPushMatrix();
+  ofPushStyle();
+  ofSetColor(ofColor::mediumSeaGreen);
+  Font.drawString("HP",BarX,BarY);
+  BarX += Font.stringWidth("HP")+4.0f;
+  ofSetColor(ofColor::gray);
+  ofRect(BarX,BarY,HPMax,BarHeight);
+  ofNoFill();
+  ofSetColor(ofColor::black);
+  ofRect(BarX,BarY,HPMax,BarHeight);
+  ofFill();
+  ofSetColor(ofColor::green);
+  if(HP<HPMax*0.2f)
+  {
+    ofSetColor(ofColor::red);
+  }  
+  ofRect(BarX,BarY,HP,BarHeight);
+  ofPopStyle();
+  ofPopMatrix();
+
+	// 显示帧率
+	if(bShowDebug) // 用bShowDebug来控制调试信息的显示与否
+	{		
+    FPS = ofGetFrameRate();
+		ofPushStyle();
+		GUI_Debug.draw();
+		ofPopStyle();
+	}	
+  
   ofPushMatrix();
   ofPushStyle();
   // 显示光标
@@ -209,17 +332,6 @@ void ofApp::draw(){
   }
   ofPopMatrix();
   ofPopStyle();
-  
-	// 显示帧率
-	if(bShowDebug) // 用bShowDebug来控制调试信息的显示与否
-	{		
-		ofPushStyle();
-		ofSetColor(ofColor::black); // 用黑色显示调试信息
-		string FPS = "FPS:" +ofToString(ofGetFrameRate());
-		ofDrawBitmapString( FPS,5,ofGetHeight()-25);		
-		ofPopStyle();
-	}	
-  
 }
 
 //--------------------------------------------------------------
@@ -287,7 +399,18 @@ void ofApp::mouseDragged(int x, int y, int button){
   MousePos = ofVec2f(x,y);
 	if(0==button)
 	{
+    ofVec2f PosLast = pPlayer->getPosition();
     ofVec2f PosNow = ofVec2f(x,y);
+    float dist = PosNow.distance(PosLast);
+    float sizePlayer = pPlayer->getSize();
+    float DeltaHP = -sizePlayer*dist*0.001f*HPDecSpd;
+    HP += DeltaHP;
+    if(HP<=0.0f)
+    {
+      GameOverString = "You're Exausted!";
+      gameOver();
+    }
+
 		pPlayer->moveTo(PosNow);
 	}
 }
@@ -305,9 +428,12 @@ void ofApp::mousePressed(int x, int y, int button){
     // 移动主角到当前鼠标位置
     ofVec2f PosNow = ofVec2f(x,y);
     pPlayer->jumpTo(PosNow);   
-    
-    // 播放跳跃声效
+
+    // 跳跃减HP
     float dist = PosNow.distance(PosLast);
+    HP -= HPDecJumpA+dist*0.01f*HPDecJumpB;
+        
+    // 播放跳跃声效
     float distNorm = (dist*dist)/(ofGetWidth()*ofGetHeight());
     float SoundSpd = ofMap(distNorm,0.0f,1.0f,1/0.618f,0.618f);
     SoundSpd = ofClamp(SoundSpd,0.5f,2.0f);
@@ -401,6 +527,17 @@ void ofApp::updateEnemies( float dt )
     {
       En->changeSize(dt*EnemyGrowthrate);
       En->changeRot(dt*90.0f);
+      if(En->getSize()>100.0f)
+      { 
+        HP -= HPBeatAmt2;
+        if(HP<=0.0f)
+        {
+          eraseEnemy(itEnemy,"Beat2");
+          GameOverString = "You're Eaten!";
+          gameOver();
+        }                
+        break;
+      }
     }
     else
     {
@@ -429,7 +566,6 @@ void ofApp::gameOver()
     ofVec2f(ofGetWidth()/2,ofGetHeight()/2));
   Sounds["Fail"].play();
   Sounds["Background"].stop();
- 
 }
 
 void ofApp::playSoundAtVolumeSpeed( 
@@ -455,15 +591,50 @@ void ofApp::saveCanvasImage()
 }
 
 void ofApp::startGame()
-{  
+{
+  HP = HPMax;
   Enemies.clear();
   bGameRunning = true;    
+  map<string,ofSoundPlayer>::iterator it;
+  for(it=Sounds.begin();it!=Sounds.end();it++)
+  {
+    it->second.stop();
+  }
   playSoundAtVolumeSpeed(Sounds["Background"]);
   Canvas.begin();
   ofClear(ofFloatColor::white);
   Canvas.end();
 }
 
+void ofApp::saveSettings()
+{
+  ofXml X;
+  X.serialize(Params);
+  string FilePath("setting/settings.xml");
+  bool bSaved = X.save(FilePath);
+  if(bSaved)
+  {
+    cout << "Save settings to: " << FilePath << endl;
+  }
+  else
+  {
+    cout << "Fail to save settings!" << endl;
+  } 
+}
 
-
+void ofApp::loadSettings()
+{
+  string FilePath("setting/settings.xml");
+  ofXml X;
+  bool bLoad = X.load(FilePath);
+  if(bLoad)
+  {
+    X.deserialize(Params);
+    cout << "settings loaded from: "<<FilePath << endl;
+  }
+  else
+  {
+    cout << "Fail to load settings!" << endl;
+  }
+}
 

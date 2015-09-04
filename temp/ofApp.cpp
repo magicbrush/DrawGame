@@ -77,7 +77,9 @@ void ofApp::setup(){
   WhiteEnemyRatio = 0.3f;
 
   // 游戏状态
-  bGameRunning = true; 
+  bGameRunning = true;
+  HP = 100.0f;
+  HPMax = 100.0f; 
 
   // 画布
   Canvas.allocate(windowSizeX,windowSizeY,GL_RGBA);
@@ -209,7 +211,32 @@ void ofApp::draw(){
   }
   ofPopMatrix();
   ofPopStyle();
-  
+
+  // 显示界面
+  // 体力
+  float BarX(5.0f);
+  float BarY(25.0f);
+  float BarHeight(-Font.stringHeight("HP"));
+  ofPushMatrix();
+  ofPushStyle();
+  ofSetColor(ofColor::mediumSeaGreen);
+  Font.drawString("HP",BarX,BarY);
+  BarX += Font.stringWidth("HP")+4.0f;
+  ofSetColor(ofColor::gray);
+  ofRect(BarX,BarY,HPMax,BarHeight);
+  ofNoFill();
+  ofSetColor(ofColor::black);
+  ofRect(BarX,BarY,HPMax,BarHeight);
+  ofFill();
+  ofSetColor(ofColor::green);
+  if(HP<HPMax*0.2f)
+  {
+    ofSetColor(ofColor::red);
+  }  
+  ofRect(BarX,BarY,HP,BarHeight);
+  ofPopStyle();
+  ofPopMatrix();
+
 	// 显示帧率
 	if(bShowDebug) // 用bShowDebug来控制调试信息的显示与否
 	{		
@@ -219,6 +246,7 @@ void ofApp::draw(){
 		ofDrawBitmapString( FPS,5,ofGetHeight()-25);		
 		ofPopStyle();
 	}	
+
   
 }
 
@@ -287,7 +315,18 @@ void ofApp::mouseDragged(int x, int y, int button){
   MousePos = ofVec2f(x,y);
 	if(0==button)
 	{
+    ofVec2f PosLast = pPlayer->getPosition();
     ofVec2f PosNow = ofVec2f(x,y);
+    float dist = PosNow.distance(PosLast);
+    float sizePlayer = pPlayer->getSize();
+    float DeltaHP = -sizePlayer*dist*0.001f;
+    HP += DeltaHP;
+    if(HP<=0.0f)
+    {
+      GameOverString = "You're Exausted!";
+      gameOver();
+    }
+
 		pPlayer->moveTo(PosNow);
 	}
 }
@@ -455,7 +494,8 @@ void ofApp::saveCanvasImage()
 }
 
 void ofApp::startGame()
-{  
+{
+  HP = HPMax;
   Enemies.clear();
   bGameRunning = true;    
   playSoundAtVolumeSpeed(Sounds["Background"]);
