@@ -6,6 +6,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "openframeworksLib", "..\..\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "CatchIt02", "..\CatchIt02\CatchIt02.vcxproj", "{FB89EFC3-9DAF-48D5-AD32-1212780982FC}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Catchit_v03", "..\Catchit_v03\Catchit_v03.vcxproj", "{9B2570F5-C340-427A-8D1E-019A3309ACDD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Catchit_v04", "..\Catchit_v04\Catchit_v04.vcxproj", "{AEFF30A7-FC93-4C64-99A7-59B5C1239F07}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -24,6 +28,14 @@ Global
 		{FB89EFC3-9DAF-48D5-AD32-1212780982FC}.Debug|Win32.Build.0 = Debug|Win32
 		{FB89EFC3-9DAF-48D5-AD32-1212780982FC}.Release|Win32.ActiveCfg = Release|Win32
 		{FB89EFC3-9DAF-48D5-AD32-1212780982FC}.Release|Win32.Build.0 = Release|Win32
+		{9B2570F5-C340-427A-8D1E-019A3309ACDD}.Debug|Win32.ActiveCfg = Debug|Win32
+		{9B2570F5-C340-427A-8D1E-019A3309ACDD}.Debug|Win32.Build.0 = Debug|Win32
+		{9B2570F5-C340-427A-8D1E-019A3309ACDD}.Release|Win32.ActiveCfg = Release|Win32
+		{9B2570F5-C340-427A-8D1E-019A3309ACDD}.Release|Win32.Build.0 = Release|Win32
+		{AEFF30A7-FC93-4C64-99A7-59B5C1239F07}.Debug|Win32.ActiveCfg = Debug|Win32
+		{AEFF30A7-FC93-4C64-99A7-59B5C1239F07}.Debug|Win32.Build.0 = Debug|Win32
+		{AEFF30A7-FC93-4C64-99A7-59B5C1239F07}.Release|Win32.ActiveCfg = Release|Win32
+		{AEFF30A7-FC93-4C64-99A7-59B5C1239F07}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
