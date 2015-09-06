@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{8B26C5F3-2476-4D44-8048-6E581A3726BA}</ProjectGuid>
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>Catchit_v05</RootNamespace>
+    <RootNamespace>CatchIt_v06</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -31,10 +31,12 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="DrawGame_release.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="drawGame_debug.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -92,6 +94,8 @@
   <ItemGroup>
     <ClCompile Include="src\CircleSprite.cpp" />
     <ClCompile Include="src\DrawGameUtils.cpp" />
+    <ClCompile Include="src\GUIBase.cpp" />
+    <ClCompile Include="src\GUITextButton.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
@@ -105,7 +109,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CircleSprite.h" />
+    <ClInclude Include="src\DrawGameGUI.h" />
     <ClInclude Include="src\DrawGameUtils.h" />
+    <ClInclude Include="src\GUIBase.h" />
+    <ClInclude Include="src\GUITextButton.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />

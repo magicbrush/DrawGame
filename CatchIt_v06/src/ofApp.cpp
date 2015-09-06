@@ -1,26 +1,27 @@
 #include "ofApp.h"
 #include "DrawGameUtils.h"
+#include "GUITextButton.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
   ofSetFrameRate(60.0f);
   ofHideCursor();
 
-	// 读取字体文件
-	bool bLoad = Font.loadFont("fonts/vag.ttf",24);
+  // 读取字体文件
+  bool bLoad = Font.loadFont("fonts/vag.ttf",24);
 
-	// 加载音效资源
-	ofSoundPlayer P0;
-	bool bP0 = P0.loadSound("sounds/tap1.mp3");
-	P0.setMultiPlay(true);
-	P0.setLoop(false);
-	Sounds["ChangeSize"] = P0;
-	ofSoundPlayer P1;
-	bool bP1 = P1.loadSound("sounds/mario_mainTheme.mp3");
-	P1.setLoop(true);
-	P1.setVolume(0.3f);
-	Sounds["Background"] = P1;	
-	P1.play();
+  // 加载音效资源
+  ofSoundPlayer P0;
+  bool bP0 = P0.loadSound("sounds/tap1.mp3");
+  P0.setMultiPlay(true);
+  P0.setLoop(false);
+  Sounds["ChangeSize"] = P0;
+  ofSoundPlayer P1;
+  bool bP1 = P1.loadSound("sounds/mario_mainTheme.mp3");
+  P1.setLoop(true);
+  P1.setVolume(0.3f);
+  Sounds["Background"] = P1;	
+  P1.play();
   ofSoundPlayer P2;
   bool bP2 = P2.loadSound("sounds/mario_jump.mp3");
   P2.setLoop(false);
@@ -68,7 +69,7 @@ void ofApp::setup(){
   P8.setSpeed(1.0f);
   P8.setMultiPlay(true);
   Sounds["Beat2"] = P8;
-	
+  
   // 初始化键鼠状态
   for(int i=0;i<3;i++)
   {
@@ -76,12 +77,12 @@ void ofApp::setup(){
   } 
   MousePos = ofVec2f(0,0);
 
-	bShowDebug.set("ShowDebugInfo",true);//默认显示调试信息
+  bShowDebug.set("ShowDebugInfo",true);//默认显示调试信息
   FPS.set("FPS",0,0,100);
 
-	//记录默认窗口尺寸
-	windowSizeX = ofGetWidth();
-	windowSizeY = ofGetHeight();
+  //记录默认窗口尺寸
+  windowSizeX = ofGetWidth();
+  windowSizeY = ofGetHeight();
 
   // 构造玩家
   pPlayer.reset(new DrawGame::CircleSprite(&Font));   
@@ -149,11 +150,26 @@ void ofApp::setup(){
   GUI_Debug.setPosition(
     ofGetWidth()-GUI_Debug.getWidth(),0);  
 
+  // 游戏界面初始化
+  ofVec2f Ctr(ofGetWidth()/2,ofGetHeight()/2);
+  Ctr += ofVec2f(0,ofGetWidth()/6);
+  ofPtr<DrawGame::GUITextButton> pBtn;
+  pBtn.reset(new DrawGame::GUITextButton(
+    "GUI_Retry","Retry",120,40,&Font,Ctr));
+  pWidget = pBtn;
+  ofAddListener(pWidget->GUIEvent,this,&ofApp::GUICallback);
+  pWidget->setScale(1.5f);
+  pWidgetOn = false;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){	
-	float dt = ofGetLastFrameTime();
+  float dt = ofGetLastFrameTime();
+
+  if(pWidgetOn)
+  {
+    pWidget->update();
+  }
 
   if(bGameRunning)
   {
@@ -229,8 +245,8 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){		
 
-	// 设置背景颜色
-	ofBackground(ofColor(255,255,255));
+  // 设置背景颜色
+  ofBackground(ofColor(255,255,255));
   
   // 显示背景
   Canvas.draw(0,0,ofGetWidth(),ofGetHeight());
@@ -261,8 +277,8 @@ void ofApp::draw(){
     ofPushStyle();
     ofSetColor(ofColor::black);
     float wd,ht;
-    ht = Font.stringHeight(GameOverString);
-    wd = Font.stringWidth(GameOverString);
+    ht = 1.5f*Font.stringHeight(GameOverString);
+    wd = 1.5f*Font.stringWidth(GameOverString);
     DrawGame::drawScaledStringByFont(
       GameOverString,
       &Font,
@@ -296,14 +312,19 @@ void ofApp::draw(){
   ofPopStyle();
   ofPopMatrix();
 
-	// 显示帧率
-	if(bShowDebug) // 用bShowDebug来控制调试信息的显示与否
-	{		
+  if(pWidgetOn)
+  {
+    pWidget->draw();
+  }
+
+  // 显示帧率
+  if(bShowDebug) // 用bShowDebug来控制调试信息的显示与否
+  {		
     FPS = ofGetFrameRate();
-		ofPushStyle();
-		GUI_Debug.draw();
-		ofPopStyle();
-	}	
+    ofPushStyle();
+    GUI_Debug.draw();
+    ofPopStyle();
+  }	
   
   ofPushMatrix();
   ofPushStyle();
@@ -337,7 +358,7 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
 
-	KeysState[key] = true; // 记录按键状态
+  KeysState[key] = true; // 记录按键状态
 
   if(!MouseKeyState[0]) // 未拖动时才可以改变角色大小
   {
@@ -365,11 +386,11 @@ void ofApp::keyPressed(int key){
     }
   }
 
-	switch (key) // 依据key的取值来选择执行的内容
-	{	
-	case OF_KEY_F1: // 若key为F1:切换调试信息的可见性
-		ofSendMessage("ToggleShowDebug");
-		break;
+  switch (key) // 依据key的取值来选择执行的内容
+  {	
+  case OF_KEY_F1: // 若key为F1:切换调试信息的可见性
+    ofSendMessage("ToggleShowDebug");
+    break;
   case OF_KEY_F2: // F2: 保存图片
     saveCanvasImage();
     break;
@@ -377,14 +398,14 @@ void ofApp::keyPressed(int key){
     startGame();
 
     break;
-	default:// 默认逻辑为空
-		break;
-	}
+  default:// 默认逻辑为空
+    break;
+  }
 }
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-	KeysState[key] = false; // 记录按键状态
+  KeysState[key] = false; // 记录按键状态
 }
 
 //--------------------------------------------------------------
@@ -395,10 +416,18 @@ void ofApp::mouseMoved(int x, int y ){
 
 //--------------------------------------------------------------
 void ofApp::mouseDragged(int x, int y, int button){
-  if(!bGameRunning)return;
+  if(!bGameRunning)
+  {
+    if(button==0)
+    {
+      pWidget->dragged(x,y);
+    }
+    return;
+  }
+
   MousePos = ofVec2f(x,y);
-	if(0==button)
-	{
+  if(0==button)
+  {
     ofVec2f PosLast = pPlayer->getPosition();
     ofVec2f PosNow = ofVec2f(x,y);
     float dist = PosNow.distance(PosLast);
@@ -411,20 +440,28 @@ void ofApp::mouseDragged(int x, int y, int button){
       gameOver();
     }
 
-		pPlayer->moveTo(PosNow);
-	}
+    pPlayer->moveTo(PosNow);
+  }
 }
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-  if(!bGameRunning)return;
+  if(!bGameRunning)
+  {
+    if(button==0)
+    {
+      pWidget->pressed(x,y);
+    }
+    return;
+  }
+
   MouseKeyState[button] = true;
   MousePos = ofVec2f(x,y);
-	if(0==button)
-	{    
+  if(0==button)
+  {    
     // 获得主角之前的位置
     ofVec2f PosLast = pPlayer->getPosition();
-		
+    
     // 移动主角到当前鼠标位置
     ofVec2f PosNow = ofVec2f(x,y);
     pPlayer->jumpTo(PosNow);   
@@ -443,17 +480,25 @@ void ofApp::mousePressed(int x, int y, int button){
 
     // 设置主角的情绪
      pPlayer->setMood(DrawGame::DRAWGAME_MOOD_ACTIVE);  
-	}
+  }
 }
 
 //--------------------------------------------------------------
 void ofApp::mouseReleased(int x, int y, int button){
-  if(!bGameRunning)return;
+  if(!bGameRunning)
+  {
+    if(button==0)
+    {
+      pWidget->release(x,y);
+    }
+    return;
+  }
+
   MouseKeyState[button] = false;
   MousePos = ofVec2f(x,y);
-	if(0==button)
-	{		
-		pPlayer->setMood(DrawGame::DRAWGAME_MOOD_BORING);
+  if(0==button)
+  {		
+    pPlayer->setMood(DrawGame::DRAWGAME_MOOD_BORING);
     
     Canvas.begin();
     ofPushMatrix();
@@ -463,21 +508,21 @@ void ofApp::mouseReleased(int x, int y, int button){
     ofPopStyle();
     ofPopMatrix();
     Canvas.end();
-	}
+  }
 }
 
 //--------------------------------------------------------------
 void ofApp::windowResized(int w, int h){
-	ofSetWindowShape(windowSizeX,windowSizeY);
+  ofSetWindowShape(windowSizeX,windowSizeY);
 }
 
 //--------------------------------------------------------------
 void ofApp::gotMessage(ofMessage msg){
-	if("ToggleShowDebug" == msg.message)
-	// 若接收到消息"ToggleShowDebug"，则切换bShowDebug状态
-	{
-		bShowDebug = !bShowDebug;
-	}	
+  if("ToggleShowDebug" == msg.message)
+  // 若接收到消息"ToggleShowDebug"，则切换bShowDebug状态
+  {
+    bShowDebug = !bShowDebug;
+  }	
 }
 
 //--------------------------------------------------------------
@@ -566,6 +611,7 @@ void ofApp::gameOver()
     ofVec2f(ofGetWidth()/2,ofGetHeight()/2));
   Sounds["Fail"].play();
   Sounds["Background"].stop();
+  pWidgetOn =true;
 }
 
 void ofApp::playSoundAtVolumeSpeed( 
@@ -594,8 +640,8 @@ void ofApp::startGame()
 {
   HP = HPMax;
   Enemies.clear();
-  
   bGameRunning = true;    
+  pWidgetOn = false;
   map<string,ofSoundPlayer>::iterator it;
   for(it=Sounds.begin();it!=Sounds.end();it++)
   {
@@ -638,4 +684,17 @@ void ofApp::loadSettings()
     cout << "Fail to load settings!" << endl;
   }
 }
+
+void ofApp::GUICallback( DrawGame::GUIEventArgs &E )
+{
+  cout << "E.opPos:" << E.opPos << endl;
+  if(E.guiType == DrawGame::GUI_TEXT_BUTTON && 
+    E.guiOpType==DrawGame::GUI_PRESSED)
+  {
+    startGame();
+    pWidgetOn = false;
+  }
+
+}
+
 
