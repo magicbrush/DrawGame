@@ -1,0 +1,9 @@
+<Whip>
+	<File>sounds//whip.mp3</File>
+	<Loop>0</Loop>
+	<MultiPlay>1</MultiPlay>
+	<Pan>0</Pan>
+	<Position>0</Position>
+	<Speed>1</Speed>
+	<Volume>1</Volume>
+</Whip>

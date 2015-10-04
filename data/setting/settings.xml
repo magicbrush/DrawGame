@@ -1,0 +1,14 @@
+<Settings>
+	<EnemyBirthRate>1</EnemyBirthRate>
+	<EnemyGrowthRate>10</EnemyGrowthRate>
+	<WhiteEnemyRatio>0.3</WhiteEnemyRatio>
+	<HP>100</HP>
+	<HPMax>100</HPMax>
+	<CoinValue>20</CoinValue>
+	<HPIncreaseSpeed>5</HPIncreaseSpeed>
+	<HPDecreaseSpeed>1.02041</HPDecreaseSpeed>
+	<HPDecJumpA>5</HPDecJumpA>
+	<HPDecJumpB>2</HPDecJumpB>
+	<HPEatAmount>7</HPEatAmount>
+	<HPBeatAmount>50</HPBeatAmount>
+</Settings>

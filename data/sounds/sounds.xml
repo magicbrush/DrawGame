@@ -1,0 +1,12 @@
+<Sounds>
+	<BackgroundMusic>		<File>sounds//mario_mainTheme.mp3</File>		<Loop>1</Loop>		<MultiPlay>0</MultiPlay>		<Pan>0.0</Pan>		<Position>0.0</Position>		<Speed>0.9</Speed>		<Volume>0.1</Volume>	</BackgroundMusic>	<GetScore>		<File>sounds//mario_coin.mp3</File>		<Loop>0</Loop>		<MultiPlay>1</MultiPlay>		<Pan>0.0</Pan>		<Position>0.001</Position>		<Speed>1.1</Speed>		<Volume>1.1</Volume>	</GetScore>	
+	<Strengthen>
+		<File>sounds//mario_strengthen.mp3</File>
+		<Loop>0</Loop>
+		<MultiPlay>1</MultiPlay>
+		<Pan>0.0</Pan>
+		<Position>0.001</Position>
+		<Speed>1.0</Speed>
+		<Volume>1.0</Volume>
+	</Strengthen>		<Fail>		<File>sounds//mario_fail.mp3</File>		<Loop>0</Loop>		<MultiPlay>1</MultiPlay>		<Pan>0</Pan>		<Position>0</Position>		<Speed>1</Speed>		<Volume>1</Volume>	</Fail>		<Jump>		<File>sounds//mario_jump.mp3</File>		<Loop>0</Loop>		<MultiPlay>1</MultiPlay>		<Pan>0</Pan>		<Position>0</Position>		<Speed>1</Speed>		<Volume>1</Volume>	</Jump>			<Step>		<File>sounds//mario_stepOnEnemy.mp3</File>		<Loop>0</Loop>		<MultiPlay>1</MultiPlay>		<Pan>0</Pan>		<Position>0</Position>		<Speed>1</Speed>		<Volume>1</Volume>	</Step>	<Shrink>		<File>sounds//shrink.mp3</File>		<Loop>0</Loop>		<MultiPlay>1</MultiPlay>		<Pan>0</Pan>		<Position>0</Position>		<Speed>1</Speed>		<Volume>1</Volume>	</Shrink>	<Whip>		<File>sounds//whip.mp3</File>		<Loop>0</Loop>		<MultiPlay>1</MultiPlay>		<Pan>0</Pan>		<Position>0</Position>		<Speed>1</Speed>		<Volume>1</Volume>	</Whip>
+</Sounds>
