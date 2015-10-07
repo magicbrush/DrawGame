@@ -1,6 +1,6 @@
 #include "ofApp.h"
 #include "DrawGameUtils.h"
-#include "GUITextButton.h"
+#include "DrawGameGUI.h"
 
 //--------------------------------------------------------------
 void ofApp::setup(){
@@ -94,8 +94,9 @@ void ofApp::setup(){
 
   // 游戏状态
   bGameRunning = true;
-  HP.set("HP",100.0f,50.0f,500.0f);
-  HPMax.set("HPMax",100.0f,50.0f,500.0f); 
+  HP.set("HP",2000.0f,0.0f,10000.0f);
+  HPMax.set("HPMax",3500.0f,50.0f,10000.0f); 
+  
 
   // 画布
   Canvas.allocate(windowSizeX,windowSizeY,GL_RGBA);
@@ -156,20 +157,30 @@ void ofApp::setup(){
   ofPtr<DrawGame::GUITextButton> pBtn;
   pBtn.reset(new DrawGame::GUITextButton(
     "GUI_Retry","Retry",120,40,&Font,Ctr));
-  pWidget = pBtn;
-  ofAddListener(pWidget->GUIEvent,this,&ofApp::GUICallback);
-  pWidget->setScale(1.5f);
-  pWidgetOn = false;
+  pRetryBtn = pBtn;
+  ofAddListener(pRetryBtn->GUIEvent,this,&ofApp::GUICallback);
+  pRetryBtn->setScale(1.5f); 
+  pRetryBtn->setVisible(false);
+  pRetryBtn->setActive(false);
+
+  ofPtr<DrawGame::GUIDataSlot> pHB;
+  ofRectangle R(5,5,ofGetWidth()-10,30);
+  string Tag2("GUI_HP"),Title2("HP");
+  ofParameter<float>* ptrHp= &HP;
+  //pHB.reset(new ofPtr<DrawGame::GUIDataBar>(
+    //ptrHp,Tag2,Title2,R,800.0f,&Font,2.0f));
+  ofTrueTypeFont* ft = &Font;
+  pHB.reset(new DrawGame::GUIDataSlot(
+    HP,HPMax,Tag2,Title2,R,0.1f,&Font,1000.0f,2.0f));  
+  pHpBar = pHB;
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){	
   float dt = ofGetLastFrameTime();
 
-  if(pWidgetOn)
-  {
-    pWidget->update();
-  }
+  pRetryBtn->update();  
+  pHpBar->update();
 
   if(bGameRunning)
   {
@@ -279,43 +290,17 @@ void ofApp::draw(){
     float wd,ht;
     ht = 1.5f*Font.stringHeight(GameOverString);
     wd = 1.5f*Font.stringWidth(GameOverString);
-    DrawGame::drawScaledStringByFont(
+    DrawGame::drawTxtByFontInRect(
       GameOverString,
       &Font,
       ofVec2f(ofGetWidth()/2,ofGetHeight()/2),
       wd,ht);   
     ofPopStyle();
   }
-
-  // 显示界面
-  // 体力
-  float BarX(1.0f);
-  float BarY(25.0f);
-  float BarHeight(-Font.stringHeight("HP"));
-  ofPushMatrix();
-  ofPushStyle();
-  ofSetColor(ofColor::mediumSeaGreen);
-  Font.drawString("HP",BarX,BarY);
-  BarX += Font.stringWidth("HP")+4.0f;
-  ofSetColor(ofColor::gray);
-  ofRect(BarX,BarY,HPMax,BarHeight);
-  ofNoFill();
-  ofSetColor(ofColor::black);
-  ofRect(BarX,BarY,HPMax,BarHeight);
-  ofFill();
-  ofSetColor(ofColor::green);
-  if(HP<HPMax*0.2f)
-  {
-    ofSetColor(ofColor::red);
-  }  
-  ofRect(BarX,BarY,HP,BarHeight);
-  ofPopStyle();
-  ofPopMatrix();
-
-  if(pWidgetOn)
-  {
-    pWidget->draw();
-  }
+  
+  // 显示HP
+  pHpBar->draw();
+  pRetryBtn->draw();  
 
   // 显示帧率
   if(bShowDebug) // 用bShowDebug来控制调试信息的显示与否
@@ -396,7 +381,6 @@ void ofApp::keyPressed(int key){
     break;
   case OF_KEY_F5: // F5: 启动游戏
     startGame();
-
     break;
   default:// 默认逻辑为空
     break;
@@ -420,11 +404,10 @@ void ofApp::mouseDragged(int x, int y, int button){
   {
     if(button==0)
     {
-      pWidget->dragged(x,y);
+      pRetryBtn->dragged(x,y);
     }
     return;
   }
-
   MousePos = ofVec2f(x,y);
   if(0==button)
   {
@@ -439,7 +422,6 @@ void ofApp::mouseDragged(int x, int y, int button){
       GameOverString = "You're Exhausted!";
       gameOver();
     }
-
     pPlayer->moveTo(PosNow);
   }
 }
@@ -450,7 +432,7 @@ void ofApp::mousePressed(int x, int y, int button){
   {
     if(button==0)
     {
-      pWidget->pressed(x,y);
+      pRetryBtn->pressed(x,y);
     }
     return;
   }
@@ -489,7 +471,7 @@ void ofApp::mouseReleased(int x, int y, int button){
   {
     if(button==0)
     {
-      pWidget->release(x,y);
+      pRetryBtn->release(x,y);
     }
     return;
   }
@@ -611,7 +593,8 @@ void ofApp::gameOver()
     ofVec2f(ofGetWidth()/2,ofGetHeight()/2));
   Sounds["Fail"].play();
   Sounds["Background"].stop();
-  pWidgetOn =true;
+  pRetryBtn->setActive(true);
+  pRetryBtn->setVisible(true);
 }
 
 void ofApp::playSoundAtVolumeSpeed( 
@@ -640,8 +623,7 @@ void ofApp::startGame()
 {
   HP = HPMax;
   Enemies.clear();
-  bGameRunning = true;    
-  pWidgetOn = false;
+  bGameRunning = true;     
   map<string,ofSoundPlayer>::iterator it;
   for(it=Sounds.begin();it!=Sounds.end();it++)
   {
@@ -651,6 +633,9 @@ void ofApp::startGame()
   Canvas.begin();
   ofClear(ofFloatColor::white);
   Canvas.end();
+
+  pRetryBtn->setVisible(false);
+  pRetryBtn->setActive(false);
 }
 
 void ofApp::saveSettings()
@@ -692,7 +677,8 @@ void ofApp::GUICallback( DrawGame::GUIEventArgs &E )
     E.guiOpType==DrawGame::GUI_PRESSED)
   {
     startGame();
-    pWidgetOn = false;
+    E.guiNode->setActive(false);
+    E.guiNode->setVisible(false);
   }
 
 }

@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{7FD42DF7-442E-479A-BA76-D0022F99702A}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>CatchIt_v07</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
+    <Import Project="CatchIt.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+    <Import Project="CatchIt_Debug.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>bin\</OutDir>
+    <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxGui\libs;..\..\..\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);..\..\..\addons\ofxGui\libs;..\..\..\addons\ofxGui\src</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\bdCircle.cpp" />
+    <ClCompile Include="src\bdLine.cpp" />
+    <ClCompile Include="src\bdRectangle.cpp" />
+    <ClCompile Include="src\bdTriangle.cpp" />
+    <ClCompile Include="src\DrawGameDefs.cpp" />
+    <ClCompile Include="src\DrawGameGUI\GUIBase.cpp" />
+    <ClCompile Include="src\DrawGameGUI\GUIDataSlot.cpp" />
+    <ClCompile Include="src\DrawGameGUI\GUITextButton.cpp" />
+    <ClCompile Include="src\Informer.cpp" />
+    <ClCompile Include="src\khLuaScript.cpp" />
+    <ClCompile Include="src\ofxAssets.cpp" />
+    <ClCompile Include="src\Body.cpp" />
+    <ClCompile Include="src\ofxLua\luaSrc\lapi.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lauxlib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lbaselib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lcode.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\ldblib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\ldebug.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\ldo.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\ldump.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lfunc.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lgc.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\linit.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\liolib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\llex.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lmathlib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lmem.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\loadlib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lobject.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lopcodes.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\loslib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lparser.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lstate.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lstring.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lstrlib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\ltable.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\ltablib.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\ltm.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lundump.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lvm.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\lzio.c" />
+    <ClCompile Include="src\ofxLua\luaSrc\print.c" />
+    <ClCompile Include="src\ofxLua\ofxLua.cpp" />
+    <ClCompile Include="src\ofxLua\ofxLuaBindings.cpp" />
+    <ClCompile Include="src\ofxLua\ofxLuaFileWriter.cpp" />
+    <ClCompile Include="src\SoundEngine.cpp" />
+    <ClCompile Include="src\BrSplash.cpp" />
+    <ClCompile Include="src\Brush.cpp" />
+    <ClCompile Include="src\DrawGameUtils.cpp" />
+    <ClCompile Include="src\FileTemplate.cpp" />
+    <ClCompile Include="src\Keyhole.cpp" />
+    <ClCompile Include="src\khEncompassInvCrCircle.cpp" />
+    <ClCompile Include="src\khGetInSameCrCircle.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\MeshPrototypes.cpp" />
+    <ClCompile Include="src\ofApp.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp" />
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp" />
+    <ClCompile Include="src\Sprite.cpp" />
+    <ClCompile Include="src\Status.cpp" />
+    <ClCompile Include="src\TextNode.cpp" />
+    <ClCompile Include="src\Tracer.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\bdCircle.h" />
+    <ClInclude Include="src\bdLine.h" />
+    <ClInclude Include="src\bdRectangle.h" />
+    <ClInclude Include="src\bdTriangle.h" />
+    <ClInclude Include="src\DrawGameDefs.h" />
+    <ClInclude Include="src\DrawGameGUI\DrawGameGUI.h" />
+    <ClInclude Include="src\DrawGameGUI\GUIBase.h" />
+    <ClInclude Include="src\DrawGameGUI\GUIDataSlot.h" />
+    <ClInclude Include="src\DrawGameGUI\GUITextButton.h" />
+    <ClInclude Include="src\Informer.h" />
+    <ClInclude Include="src\khLuaScript.h" />
+    <ClInclude Include="src\ofxAssets.h" />
+    <ClInclude Include="src\Body.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lapi.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lauxlib.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lcode.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\ldebug.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\ldo.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lfunc.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lgc.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\llex.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\llimits.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lmem.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lobject.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lopcodes.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lparser.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lstate.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lstring.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\ltable.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\ltm.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lua.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lua.hpp" />
+    <ClInclude Include="src\ofxLua\luaSrc\luaconf.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lualib.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lundump.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lvm.h" />
+    <ClInclude Include="src\ofxLua\luaSrc\lzio.h" />
+    <ClInclude Include="src\ofxLua\ofxLua.h" />
+    <ClInclude Include="src\ofxLua\ofxLuaBindings.h" />
+    <ClInclude Include="src\ofxLua\ofxLuaFileWriter.h" />
+    <ClInclude Include="src\SoundEngine.h" />
+    <ClInclude Include="src\BrSplash.h" />
+    <ClInclude Include="src\Brush.h" />
+    <ClInclude Include="src\DrawGameUtils.h" />
+    <ClInclude Include="src\FileTemplate.h" />
+    <ClInclude Include="src\Keyhole.h" />
+    <ClInclude Include="src\khEncompassInvCrCircle.h" />
+    <ClInclude Include="src\khGetInSameCrCircle.h" />
+    <ClInclude Include="src\MeshPrototypes.h" />
+    <ClInclude Include="src\ofApp.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h" />
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h" />
+    <ClInclude Include="src\SingletonTemplate.h" />
+    <ClInclude Include="src\Sprite.h" />
+    <ClInclude Include="src\Status.h" />
+    <ClInclude Include="src\TextNode.h" />
+    <ClInclude Include="src\Tracer.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\libs\openFrameworksCompiled\project\vs\openframeworksLib.vcxproj">
+      <Project>{5837595d-aca9-485c-8e76-729040ce4b0b}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc">
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+</Project>

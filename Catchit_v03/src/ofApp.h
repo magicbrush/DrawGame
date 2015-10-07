@@ -8,10 +8,7 @@ class ofApp : public ofBaseApp{
 	public:
 		void setup(); // 初始化
 		void update(); // 更新状态
-
     void gameOver();
-
-
     void updateEnemies( float dt );
     void randBornEnemy( float dt );
     void eraseEnemy( 

@@ -37,10 +37,13 @@
     <ClCompile Include="src\DrawGameUtils.cpp">
       <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUIBase.cpp">
+    <ClCompile Include="src\DrawGameGUI\GUIBase.cpp">
       <Filter>src\DrawGameGUI</Filter>
     </ClCompile>
-    <ClCompile Include="src\GUITextButton.cpp">
+    <ClCompile Include="src\DrawGameGUI\GUIDataSlot.cpp">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DrawGameGUI\GUITextButton.cpp">
       <Filter>src\DrawGameGUI</Filter>
     </ClCompile>
   </ItemGroup>
@@ -98,13 +101,16 @@
     <ClInclude Include="src\DrawGameUtils.h">
       <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUIBase.h">
+    <ClInclude Include="src\DrawGameGUI\DrawGameGUI.h">
       <Filter>src\DrawGameGUI</Filter>
     </ClInclude>
-    <ClInclude Include="src\GUITextButton.h">
+    <ClInclude Include="src\DrawGameGUI\GUIBase.h">
       <Filter>src\DrawGameGUI</Filter>
     </ClInclude>
-    <ClInclude Include="src\DrawGameGUI.h">
+    <ClInclude Include="src\DrawGameGUI\GUIDataSlot.h">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DrawGameGUI\GUITextButton.h">
       <Filter>src\DrawGameGUI</Filter>
     </ClInclude>
   </ItemGroup>

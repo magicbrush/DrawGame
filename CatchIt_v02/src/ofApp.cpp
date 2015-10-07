@@ -45,8 +45,7 @@ void ofApp::setup(){
 }
 
 //--------------------------------------------------------------
-void ofApp::update(){
-  
+void ofApp::update(){  
   float dt = ofGetLastFrameTime();
   if(KeysState['a'])
   {
@@ -55,10 +54,8 @@ void ofApp::update(){
   else if(KeysState['d'])
   {
     Rot += 360.0f*dt;
-  }
-  
-  Rot = ofWrapDegrees(Rot);
-  
+  }  
+  Rot = ofWrapDegrees(Rot);  
 }
 
 //--------------------------------------------------------------
@@ -95,9 +92,9 @@ void ofApp::draw(){
   ofPopStyle();
   ofPopMatrix();
 
-  ofPushMatrix();
-  ofPushStyle();
   // œ‘ æπ‚±Í
+  ofPushMatrix();
+  ofPushStyle();  
   if(!MouseKeyState[0]&&
     !MouseKeyState[1]&&
     !MouseKeyState[2])
@@ -197,9 +194,7 @@ void ofApp::mousePressed(int x, int y, int button){
     moveCircleTo(x, y);		
     Sounds["Jump"].stop();    
     Sounds["Jump"].play();
-  }
-
-  
+  }  
 }
 
 //--------------------------------------------------------------

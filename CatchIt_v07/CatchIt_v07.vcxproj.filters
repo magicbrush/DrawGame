@@ -1,0 +1,432 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\ofApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxButton.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxLabel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxPanel.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSlider.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\addons\ofxGui\src\ofxToggle.cpp">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\FileTemplate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Sprite.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DrawGameUtils.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\MeshPrototypes.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Status.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Keyhole.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\khGetInSameCrCircle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\khEncompassInvCrCircle.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Tracer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Brush.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\BrSplash.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\SoundEngine.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DrawGameGUI\GUIBase.cpp">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DrawGameGUI\GUIDataSlot.cpp">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DrawGameGUI\GUITextButton.cpp">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxAssets.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bdCircle.cpp">
+      <Filter>src\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Body.cpp">
+      <Filter>src\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bdLine.cpp">
+      <Filter>src\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bdRectangle.cpp">
+      <Filter>src\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="src\bdTriangle.cpp">
+      <Filter>src\Body</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\ofxLua.cpp">
+      <Filter>src\ofxLua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\ofxLuaBindings.cpp">
+      <Filter>src\ofxLua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\ofxLuaFileWriter.cpp">
+      <Filter>src\ofxLua</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\ldblib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\ldebug.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\ldo.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\ldump.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lfunc.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lgc.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\linit.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\liolib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\llex.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lmathlib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lmem.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\loadlib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lobject.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lopcodes.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\loslib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lparser.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lstate.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lstring.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lstrlib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\ltable.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\ltablib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\ltm.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lundump.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lvm.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lzio.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\print.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lapi.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lauxlib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lbaselib.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ofxLua\luaSrc\lcode.c">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClCompile>
+    <ClCompile Include="src\khLuaScript.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\DrawGameDefs.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\Informer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TextNode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{71834F65-F3A9-211E-73B8-DC85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui">
+      <UniqueIdentifier>{4F2A59AF-5F4E-704B-D067-EC13}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxGui\src">
+      <UniqueIdentifier>{645E9533-4DCD-6179-1CDF-CB65}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\DrawGameGUI">
+      <UniqueIdentifier>{75ff751a-e9ab-4e70-a066-b50f5354ddc1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\Body">
+      <UniqueIdentifier>{160ab5fc-b29b-400f-9222-387173184c51}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ofxLua">
+      <UniqueIdentifier>{144971a1-bf0b-4ae7-8cbb-1de82dde70e7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\ofxLua\LusSrc">
+      <UniqueIdentifier>{eefc246e-8a48-44b3-995c-76d7ad14dd31}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ofApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGui.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxGuiGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxLabel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxPanel.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSlider.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxSliderGroup.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\addons\ofxGui\src\ofxToggle.h">
+      <Filter>addons\ofxGui\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileTemplate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Sprite.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DrawGameUtils.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\MeshPrototypes.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Status.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Keyhole.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\khGetInSameCrCircle.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\khEncompassInvCrCircle.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Tracer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Brush.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\BrSplash.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SingletonTemplate.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\SoundEngine.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DrawGameGUI\GUIBase.h">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DrawGameGUI\GUIDataSlot.h">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DrawGameGUI\GUITextButton.h">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DrawGameGUI\DrawGameGUI.h">
+      <Filter>src\DrawGameGUI</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxAssets.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bdCircle.h">
+      <Filter>src\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Body.h">
+      <Filter>src\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bdLine.h">
+      <Filter>src\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bdRectangle.h">
+      <Filter>src\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="src\bdTriangle.h">
+      <Filter>src\Body</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\ofxLua.h">
+      <Filter>src\ofxLua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\ofxLuaBindings.h">
+      <Filter>src\ofxLua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\ofxLuaFileWriter.h">
+      <Filter>src\ofxLua</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\ldebug.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\ldo.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lfunc.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lgc.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\llex.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\llimits.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lmem.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lobject.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lopcodes.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lparser.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lstate.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lstring.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\ltable.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\ltm.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lua.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lua.hpp">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\luaconf.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lualib.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lundump.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lvm.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lzio.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lapi.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lauxlib.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ofxLua\luaSrc\lcode.h">
+      <Filter>src\ofxLua\LusSrc</Filter>
+    </ClInclude>
+    <ClInclude Include="src\khLuaScript.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\DrawGameDefs.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Informer.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TextNode.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>

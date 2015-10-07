@@ -81,7 +81,6 @@ private:
   void loadSettings();
 
   // ”Œœ∑ΩÁ√Ê
-  ofPtr<DrawGame::GUIBase> pWidget;  
-  void GUICallback(DrawGame::GUIEventArgs &E);
-  bool pWidgetOn;
+  ofPtr<DrawGame::GUIBase> pRetryBtn,pHpBar;
+  void GUICallback(DrawGame::GUIEventArgs &E); 
 };

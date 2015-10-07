@@ -93,9 +93,10 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\CircleSprite.cpp" />
+    <ClCompile Include="src\DrawGameGUI\GUIBase.cpp" />
+    <ClCompile Include="src\DrawGameGUI\GUIDataSlot.cpp" />
+    <ClCompile Include="src\DrawGameGUI\GUITextButton.cpp" />
     <ClCompile Include="src\DrawGameUtils.cpp" />
-    <ClCompile Include="src\GUIBase.cpp" />
-    <ClCompile Include="src\GUITextButton.cpp" />
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\ofApp.cpp" />
     <ClCompile Include="..\..\..\addons\ofxGui\src\ofxBaseGui.cpp" />
@@ -109,10 +110,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\CircleSprite.h" />
-    <ClInclude Include="src\DrawGameGUI.h" />
+    <ClInclude Include="src\DrawGameGUI\DrawGameGUI.h" />
+    <ClInclude Include="src\DrawGameGUI\GUIBase.h" />
+    <ClInclude Include="src\DrawGameGUI\GUIDataSlot.h" />
+    <ClInclude Include="src\DrawGameGUI\GUITextButton.h" />
     <ClInclude Include="src\DrawGameUtils.h" />
-    <ClInclude Include="src\GUIBase.h" />
-    <ClInclude Include="src\GUITextButton.h" />
     <ClInclude Include="src\ofApp.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxBaseGui.h" />
     <ClInclude Include="..\..\..\addons\ofxGui\src\ofxButton.h" />

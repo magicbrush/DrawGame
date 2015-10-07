@@ -222,7 +222,7 @@ void DrawGame::CircleSprite::drawFace()
   ofColor FaceColor = 
     White?ofColor::black:ofColor::white;
   ofSetColor(FaceColor);   
-  DrawGame::drawScaledStringByFont(
+  DrawGame::drawTxtByFontInRect(
     getModeString(),pFont,ofVec2f(0,0),1.2f,1.2f);
   ofPopStyle();
 }
